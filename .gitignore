@@ -9,8 +9,6 @@ application/logs/*
 !application/*/.htaccess
 
 composer.lock
-.env.development
-.env.production
 
 user_guide_src/build/*
 user_guide_src/cilexer/build/*

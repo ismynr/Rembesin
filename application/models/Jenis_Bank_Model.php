@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Jenis_Bank_Model extends CI_Model{
+class Jenis_bank_model extends CI_Model{
 
 	private $_table = "tb_jenis_bank";
 	var $select_column = array("id_bank","jenis_bank");

@@ -1,6 +1,6 @@
 <?php 
 
-class Karyawan_Model extends CI_Model{
+class Karyawan_model extends CI_Model{
 
 	private $_table = "tb_karyawan";
 	var $select_column = array("id_karyawan","id_user","id_perusahaan","kode_karyawan","nama_karyawan","jk_karyawan","email_karyawan","alamat_karyawan","jabatan_karyawan","identitas_karyawan","no_identitas_karyawan","created_at","updated_at");

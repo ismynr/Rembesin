@@ -1,5 +1,5 @@
 <?php 
-class Admin_Model extends CI_Model{
+class Admin_model extends CI_Model{
 
 	private $_table = "tb_admin";
 	var $select_column = array("id_admin", "id_user", "nama_admin", "email", "created_at", "updated_at");

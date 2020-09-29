@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Log_Model extends CI_Model {
+class Log_model extends CI_Model {
 
 	private $_table = "tb_log";
 	var $select_column = array("log_id","log_time","log_user","log_role","log_tipe","log_aksi","log_item");

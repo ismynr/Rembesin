@@ -17,8 +17,8 @@ class Admin_Controller extends CI_Controller{
         $this->load->view("admin/dashboard", $data);
     }
     public function fetch_actifity_log_dashboard(){
-        $this->load->model('log_model');
-        $fetch_data = $this->log_model->make_datatables_actifityLog_adm();
+        $this->load->model('Log_model');
+        $fetch_data = $this->Log_model->make_datatables_actifityLog_adm();
         $data = array();
         foreach($fetch_data as $row){
             $sub_array = array();
@@ -32,8 +32,8 @@ class Admin_Controller extends CI_Controller{
         }
         $output = array(
             "draw"  => intval($_POST["draw"]),
-            "recordsTotal"  => $this->log_model->get_all_data_actifityLog_adm(),
-            "recordsFiltered"  => $this->log_model->get_filtered_actifityLog_adm(),
+            "recordsTotal"  => $this->Log_model->get_all_data_actifityLog_adm(),
+            "recordsFiltered"  => $this->Log_model->get_filtered_actifityLog_adm(),
             "data"  =>  $data
         );
         echo json_encode($output);
@@ -45,8 +45,8 @@ class Admin_Controller extends CI_Controller{
         $this->load->view('admin/new_regist', $data);
     }
     public function fetch_newRegist(){
-    	$this->load->model('perusahaan_model');
-    	$fetch_data = $this->perusahaan_model->make_datatables_newRegist_adm();
+    	$this->load->model('Perusahaan_model');
+    	$fetch_data = $this->Perusahaan_model->make_datatables_newRegist_adm();
         $data = array();
         $no = 1;
         foreach($fetch_data as $row){
@@ -65,8 +65,8 @@ class Admin_Controller extends CI_Controller{
         }
         $output = array(
             "draw"  => intval($_POST["draw"]),
-            "recordsTotal"  => $this->perusahaan_model->get_all_data_newRegist_adm(),
-            "recordsFiltered"  => $this->perusahaan_model->get_filtered_data_newRegist_adm(),
+            "recordsTotal"  => $this->Perusahaan_model->get_all_data_newRegist_adm(),
+            "recordsFiltered"  => $this->Perusahaan_model->get_filtered_data_newRegist_adm(),
             "data"  =>  $data
         );
         echo json_encode($output);
@@ -75,13 +75,13 @@ class Admin_Controller extends CI_Controller{
         $this->form_validation->set_rules('accept_id', 'accept', 'required|trim');
         $id = $this->input->post('accept_id');
         $nama_perusahaan = getItemById('tb_perusahaan', 'id_perusahaan', $id)->nama_perusahaan;
-        $this->load->model('perusahaan_model');
+        $this->load->model('Perusahaan_model');
 
         if($this->form_validation->run() == false){
             $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Akun perusahaan gagal diaktifkan</div>');
             $this->list_newRegist();
         }else{
-            if($this->perusahaan_model->approve_newRegist_adm($id)  == false){
+            if($this->Perusahaan_model->approve_newRegist_adm($id)  == false){
                 $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Akun perusahaan gagal diaktifkan</div>');
             }else{
                 activity_log("perusahaan", "approve", $nama_perusahaan);
@@ -95,13 +95,13 @@ class Admin_Controller extends CI_Controller{
         $this->form_validation->set_rules('del_id', 'delete', 'required|trim');
         $id = $this->input->post('del_id');
         $nama_perusahaan = getItemById('tb_perusahaan', 'id_perusahaan', $id)->nama_perusahaan;
-        $this->load->model('perusahaan_model');
+        $this->load->model('Perusahaan_model');
 
         if($this->form_validation->run() == false){
             $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Akun perusahaan gagal dipindahkan ke trash</div>');
             $this->list_newRegist();
         }else{
-            if($this->perusahaan_model->deleteTrash_newRegist_adm($id) == false){
+            if($this->Perusahaan_model->deleteTrash_newRegist_adm($id) == false){
                 $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Akun perusahaan gagal dipindahkan ke trash</div>');
             }else{
                 activity_log("perusahaan", "dipindahkan ke trash", $nama_perusahaan);
@@ -117,8 +117,8 @@ class Admin_Controller extends CI_Controller{
         $this->load->view('admin/perusahaan', $data);
     }
     function fetch_perusahaan(){
-    	$this->load->model('perusahaan_model');
-        $fetch_data = $this->perusahaan_model->make_datatables_perusahaan_adm();
+    	$this->load->model('Perusahaan_model');
+        $fetch_data = $this->Perusahaan_model->make_datatables_perusahaan_adm();
         $data = array();
         $no = 1;
         foreach($fetch_data as $row){
@@ -137,8 +137,8 @@ class Admin_Controller extends CI_Controller{
         }
         $output = array(
             "draw"  => intval($_POST["draw"]),
-            "recordsTotal"  => $this->perusahaan_model->get_all_data_perusahaan_adm(),
-            "recordsFiltered"  => $this->perusahaan_model->get_filtered_data_perusahaan_adm(),
+            "recordsTotal"  => $this->Perusahaan_model->get_all_data_perusahaan_adm(),
+            "recordsFiltered"  => $this->Perusahaan_model->get_filtered_data_perusahaan_adm(),
             "data"  =>  $data
         );
         echo json_encode($output);
@@ -147,13 +147,13 @@ class Admin_Controller extends CI_Controller{
         $this->form_validation->set_rules('undo_id', 'undo', 'required|trim');
         $id = $this->input->post('undo_id');
         $nama_perusahaan = getItemById('tb_perusahaan', 'id_perusahaan', $id)->nama_perusahaan;
-        $this->load->model('perusahaan_model');
+        $this->load->model('Perusahaan_model');
 
         if($this->form_validation->run() == false){
             $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Akun perusahaan gagal dinonaktifkan</div>');
             $this->list_perusahaan();
         }else{
-            if($this->perusahaan_model->disapprove_perusahaan_adm($id) == false){
+            if($this->Perusahaan_model->disapprove_perusahaan_adm($id) == false){
                 $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Akun perusahaan gagal dinonaktifkan</div>');
             }else{
                 activity_log("perusahaan", "disapprove", $nama_perusahaan);
@@ -166,13 +166,13 @@ class Admin_Controller extends CI_Controller{
         $this->form_validation->set_rules('delTrash_id', 'delete', 'required|trim');
         $id = $this->input->post('delTrash_id');
         $nama_perusahaan = getItemById('tb_jenis_identitas', 'id_identitas', $id)->jenis_identitas;
-        $this->load->model('perusahaan_model');
+        $this->load->model('Perusahaan_model');
 
         if($this->form_validation->run() == false){
             $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Akun perusahaan gagal dipindahkan ke trash</div>');
             $this->list_perusahaan();   
         }else{
-            if($this->perusahaan_model->deleteTrash_perusahaan_adm($id) == false){
+            if($this->Perusahaan_model->deleteTrash_perusahaan_adm($id) == false){
                 $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Akun perusahaan gagal dipindahkan ke trash</div>');
             }else{
                 activity_log("perusahaan", "dipindahkan ke trash", $nama_perusahaan);
@@ -188,8 +188,8 @@ class Admin_Controller extends CI_Controller{
         $this->load->view('admin/master_data/jenis_identitas', $data);
     }
     function fetch_jenisIdentitas(){
-        $this->load->model('jenis_identitas_model');
-        $fetch_data = $this->jenis_identitas_model->make_datatables_jIdentitas_adm();
+        $this->load->model('Jenis_identitas_model');
+        $fetch_data = $this->Jenis_identitas_model->make_datatables_jIdentitas_adm();
         $data = array();
         $no = 1;
         foreach($fetch_data as $row){
@@ -203,8 +203,8 @@ class Admin_Controller extends CI_Controller{
         }
         $output = array(
             "draw"  => intval($_POST["draw"]),
-            "recordsTotal"  => $this->jenis_identitas_model->get_all_data_jIdentitas_adm(),
-            "recordsFiltered"  => $this->jenis_identitas_model->get_filtered_jIdentitas_adm(),
+            "recordsTotal"  => $this->Jenis_identitas_model->get_all_data_jIdentitas_adm(),
+            "recordsFiltered"  => $this->Jenis_identitas_model->get_filtered_jIdentitas_adm(),
             "data"  =>  $data
         );
         echo json_encode($output);
@@ -212,13 +212,13 @@ class Admin_Controller extends CI_Controller{
     function add_jenisIdentitas(){
         $this->form_validation->set_rules('jenis_identitas', 'Jenis Identitas', 'required');
         $jenis = $this->input->post('jenis_identitas');
-        $this->load->model('jenis_identitas_model');
+        $this->load->model('Jenis_identitas_model');
 
         if($this->form_validation->run() == false){
             $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Identitas gagal ditambahkan</div>');
             $this->list_jenisIdentitas();
         }else{
-            if($this->jenis_identitas_model->add_jIdentitas_adm($jenis) == false){
+            if($this->Jenis_identitas_model->add_jIdentitas_adm($jenis) == false){
                 $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Identitas gagal ditambahkan</div>');
             }else{
                 activity_log("jenis identitas", "tambah data", $jenis);
@@ -233,13 +233,13 @@ class Admin_Controller extends CI_Controller{
         $this->form_validation->set_rules('jenis_identitas', 'Jenis Identitas', 'required');
         $id = $this->input->post('id');
         $jenis = $this->input->post('jenis_identitas');
-        $this->load->model('jenis_identitas_model');
+        $this->load->model('Jenis_identitas_model');
 
         if($this->form_validation->run() == false){
             $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Identitas gagal diupdate</div>');
             $this->list_jenisIdentitas();
         }else{
-            if($this->jenis_identitas_model->update_jIdentitas_adm($id, $jenis) == false){
+            if($this->Jenis_identitas_model->update_jIdentitas_adm($id, $jenis) == false){
                 $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Identitas gagal diupdate</div>');
             }else{
                 activity_log("jenis identitas", "ubah data", $jenis);
@@ -252,13 +252,13 @@ class Admin_Controller extends CI_Controller{
         $this->form_validation->set_rules('id', 'Identitas', 'required|trim');
         $id = $this->input->post('id');
         $jenis = getItemById('tb_jenis_identitas', 'id_identitas', $id)->jenis_identitas;
-        $this->load->model('jenis_identitas_model');
+        $this->load->model('Jenis_identitas_model');
 
         if($this->form_validation->run() == false){
             $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Identitas gagal dihapus</div>');
             $this->list_jenisIdentitas();
         }else{
-            if($this->jenis_identitas_model->delete_jIdentitas_adm($id) == false){
+            if($this->Jenis_identitas_model->delete_jIdentitas_adm($id) == false){
                 $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Identitas gagal dihapus</div>');
             }else{
                 activity_log("jenis identitas", "hapus data", $jenis);
@@ -274,8 +274,8 @@ class Admin_Controller extends CI_Controller{
         $this->load->view('admin/master_data/jenis_nota', $data);
     }
     function fetch_jenisNota(){
-        $this->load->model('jenis_nota_model');
-        $fetch_data = $this->jenis_nota_model->make_datatables_jNota_adm();
+        $this->load->model('Jenis_nota_model');
+        $fetch_data = $this->Jenis_nota_model->make_datatables_jNota_adm();
         $data = array();
         $no = 1;
         foreach($fetch_data as $row){
@@ -291,8 +291,8 @@ class Admin_Controller extends CI_Controller{
         }
         $output = array(
             "draw"  => intval($_POST["draw"]),
-            "recordsTotal"  => $this->jenis_nota_model->get_all_data_jNota_adm(),
-            "recordsFiltered"  => $this->jenis_nota_model->get_filtered_jNota_adm(),
+            "recordsTotal"  => $this->Jenis_nota_model->get_all_data_jNota_adm(),
+            "recordsFiltered"  => $this->Jenis_nota_model->get_filtered_jNota_adm(),
             "data"  =>  $data
         );
         echo json_encode($output);
@@ -316,9 +316,9 @@ class Admin_Controller extends CI_Controller{
                 $jenis = $this->input->post('jenis_nota');
                 $deskripsi = $this->input->post('deskripsi_nota');
                 $foto_nota= $data['upload_data']['file_name'];
-                $this->load->model('jenis_nota_model');
+                $this->load->model('Jenis_nota_model');
 
-                if($this->jenis_nota_model->add_jNota_adm($jenis, $deskripsi, $foto_nota) == false){
+                if($this->Jenis_nota_model->add_jNota_adm($jenis, $deskripsi, $foto_nota) == false){
                     $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Nota gagal ditambahkan</div>');
                 }else{
                     activity_log("jenis nota", "tambah data", $jenis);
@@ -331,7 +331,7 @@ class Admin_Controller extends CI_Controller{
         }
     }
     function update_jenisNota(){
-        $this->load->model('jenis_nota_model');
+        $this->load->model('Jenis_nota_model');
         $this->form_validation->set_rules('update_id', 'Id', 'required|trim');
         $this->form_validation->set_rules('jenis_nota', 'Jenis Nota', 'required');
         $this->form_validation->set_rules('deskripsi_nota', 'Deskripsi Nota', 'required|max_length[70]');
@@ -358,7 +358,7 @@ class Admin_Controller extends CI_Controller{
             }else{
                 $foto_nota= $last_foto_nota;
             }
-            if($this->jenis_nota_model->update_jNota_adm($id, $jenis, $deskripsi, $foto_nota) == false){
+            if($this->Jenis_nota_model->update_jNota_adm($id, $jenis, $deskripsi, $foto_nota) == false){
                 $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Nota gagal diupdate</div>');
             }else{
                 activity_log("jenis nota", "ubah data", $jenis);
@@ -368,7 +368,7 @@ class Admin_Controller extends CI_Controller{
         }   
     }
     function delete_jenisNota(){
-        $this->load->model('jenis_nota_model');
+        $this->load->model('Jenis_nota_model');
         $this->form_validation->set_rules('id', 'Id', 'required|trim');
         $this->form_validation->set_rules('gambar_nota', 'Gambar Nota', 'required');
         
@@ -380,7 +380,7 @@ class Admin_Controller extends CI_Controller{
             $jenis_nota = getItemById('tb_jenis_nota', 'id_nota', $id)->jenis_nota;
             $gambar_nota = $this->input->post('gambar_nota');
 
-            if($this->jenis_nota_model->delete_jNota_adm($id) == false){
+            if($this->Jenis_nota_model->delete_jNota_adm($id) == false){
                 $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Nota gagal dihapus</div>');
             }else{
                 activity_log("jenis nota", "hapus data", $jenis_nota);
@@ -397,8 +397,8 @@ class Admin_Controller extends CI_Controller{
         $this->load->view('admin/master_data/jenis_bank', $data);
     }
     function fetch_jenisBank(){
-        $this->load->model('jenis_bank_model');
-        $fetch_data = $this->jenis_bank_model->make_datatables_jBank_adm();
+        $this->load->model('Jenis_bank_model');
+        $fetch_data = $this->Jenis_bank_model->make_datatables_jBank_adm();
         $data = array();
         $no = 1;
         foreach($fetch_data as $row){
@@ -412,8 +412,8 @@ class Admin_Controller extends CI_Controller{
         }
         $output = array(
             "draw"  => intval($_POST["draw"]),
-            "recordsTotal"  => $this->jenis_bank_model->get_all_data_jBank_adm(),
-            "recordsFiltered"  => $this->jenis_bank_model->get_filtered_jBank_adm(),
+            "recordsTotal"  => $this->Jenis_bank_model->get_all_data_jBank_adm(),
+            "recordsFiltered"  => $this->Jenis_bank_model->get_filtered_jBank_adm(),
             "data"  =>  $data
         );
         echo json_encode($output);
@@ -421,13 +421,13 @@ class Admin_Controller extends CI_Controller{
     function add_jenisBank(){
         $this->form_validation->set_rules('jenis_bank', 'Id', 'required');
         $jenis = $this->input->post('jenis_bank');
-        $this->load->model('jenis_bank_model');
+        $this->load->model('Jenis_bank_model');
 
         if($this->form_validation->run() == false){
             $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Jenis bank gagal ditambahkan</div>');
             $this->list_jenisBank();
         }else{
-            if($this->jenis_bank_model->add_jBank_adm($jenis) == false){
+            if($this->Jenis_bank_model->add_jBank_adm($jenis) == false){
                 $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Jenis bank gagal ditambahkan</div>');
             }else{
                 activity_log("jenis bank", "tambah data", $jenis);
@@ -437,7 +437,7 @@ class Admin_Controller extends CI_Controller{
         }
     }
     function update_jenisBank(){
-        $this->load->model('jenis_bank_model');
+        $this->load->model('Jenis_bank_model');
         $this->form_validation->set_rules('id', 'Id', 'required|trim');
         $this->form_validation->set_rules('jenis_bank', 'Jenis Bank', 'required');
         $id = $this->input->post('id');
@@ -446,7 +446,7 @@ class Admin_Controller extends CI_Controller{
             $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Jenis bank gagal diupdate</div>');
             $this->list_jenisBank();
         }else{
-            if($this->jenis_bank_model->update_jBank_adm($id, $jenis) == false){
+            if($this->Jenis_bank_model->update_jBank_adm($id, $jenis) == false){
                 $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Jenis bank gagal diupdate</div>');
             }else{
                 activity_log("jenis bank", "ubah data", $jenis);
@@ -456,7 +456,7 @@ class Admin_Controller extends CI_Controller{
         }
     }
     function delete_jenisBank(){
-        $this->load->model('jenis_bank_model');
+        $this->load->model('Jenis_bank_model');
         $this->form_validation->set_rules('id', 'Id', 'required|trim');
         $id = $this->input->post('id');
         $jenis_bank = getItemById('tb_jenis_bank', 'id_bank', $id)->jenis_bank;
@@ -464,7 +464,7 @@ class Admin_Controller extends CI_Controller{
             $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Jenis bank gagal dihapus</div>');
             $this->list_jenisBank();
         }else{
-            if($this->jenis_bank_model->delete_jBank_adm($id) == false){
+            if($this->Jenis_bank_model->delete_jBank_adm($id) == false){
                 $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Jenis bank gagal dihapus</div>');
             }else{
                 activity_log("jenis bank", "hapus data", $jenis_bank);
@@ -480,8 +480,8 @@ class Admin_Controller extends CI_Controller{
         $this->load->view('admin/trash', $data);
     }
     function fetch_trash(){
-    	$this->load->model('perusahaan_model');
-        $fetch_data = $this->perusahaan_model->make_datatables_trash_adm();
+    	$this->load->model('Perusahaan_model');
+        $fetch_data = $this->Perusahaan_model->make_datatables_trash_adm();
         $data = array();
         $no = 1;
         foreach($fetch_data as $row){
@@ -500,14 +500,14 @@ class Admin_Controller extends CI_Controller{
         }
         $output = array(
             "draw"  => intval($_POST["draw"]),
-            "recordsTotal"  => $this->perusahaan_model->get_all_data_trash_adm(),
-            "recordsFiltered"  => $this->perusahaan_model->get_filtered_data_trash_adm(),
+            "recordsTotal"  => $this->Perusahaan_model->get_all_data_trash_adm(),
+            "recordsFiltered"  => $this->Perusahaan_model->get_filtered_data_trash_adm(),
             "data"  =>  $data
         );
         echo json_encode($output);
     }
     function restore_trash(){
-        $this->load->model('perusahaan_model');
+        $this->load->model('Perusahaan_model');
         $this->form_validation->set_rules('id', 'Id', 'required|trim');
         $id = $this->input->post('id');
         $nama_perusahaan = getItemById('tb_perusahaan', 'id_perusahaan', $id)->nama_perusahaan;
@@ -515,7 +515,7 @@ class Admin_Controller extends CI_Controller{
             $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Akun perusahaan gagal direstore (dikeluarkan dari trash)</div>');
             $this->list_trash();
         }else{
-            if($this->perusahaan_model->restore_trash_adm($id) == false){
+            if($this->Perusahaan_model->restore_trash_adm($id) == false){
                 $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Akun perusahaan gagal direstore (dikeluarkan dari trash)</div>');
             }else{
                 activity_log("perusahaan", "dikeluarkan dari trash", $nama_perusahaan);
@@ -525,14 +525,14 @@ class Admin_Controller extends CI_Controller{
         }
     }
     function delete_trash(){
-        $this->load->model('perusahaan_model');
+        $this->load->model('Perusahaan_model');
         $id = $this->input->post('del_id');
         $nama_perusahaan = getItemById('tb_perusahaan', 'id_perusahaan', $id)->nama_perusahaan;
         if($this->form_validation->run() == false){
             $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-dnger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Akun perusahaan gagal dihapus secara permanent</div>');
             $this->list_trash();
         }else{
-            if($this->perusahaan_model->delete_trash_adm($id) == false){
+            if($this->Perusahaan_model->delete_trash_adm($id) == false){
                 $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-dnger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Akun perusahaan gagal dihapus secara permanent</div>');
             }else{
                 activity_log("perusahaan", "dihapus permanent", $nama_perusahaan);
@@ -542,7 +542,7 @@ class Admin_Controller extends CI_Controller{
         }
     }
     public function ubahProfile(){
-        $this->load->model('admin_model');
+        $this->load->model('Admin_model');
         $nowDateTime = date('Y-m-d H:i:s');
         $id = $this->session->userdata('id_user');
         $nama = $this->input->post('nama');
@@ -554,7 +554,7 @@ class Admin_Controller extends CI_Controller{
                 alert-dismissible mt-3 alertAutoClose" role="alert">Profil gagal diubah! harap isi data dengan benar</div>');
             $this->index();
         }else{
-            if(!$this->admin_model->update_profile_adm($id, $nama, $email, $nowDateTime) == false){
+            if(!$this->Admin_model->update_profile_adm($id, $nama, $email, $nowDateTime) == false){
                 activity_log("admin", "ubah profil", $nama);
                 $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger 
                 alert-dismissible mt-3 alertAutoClose" role="alert">Profile gagal diubah!</div>');
@@ -585,8 +585,8 @@ class Admin_Controller extends CI_Controller{
         }else{
             if(password_verify($passwordLama, $val_user->password)){
                 activity_log("admin", "ubah password", "******");
-                $this->load->model('user_model');
-                if($this->user_model->ubah_passwordKaryawan_adm($id_user, $username, password_hash($passwordBaru, PASSWORD_DEFAULT), $nowDateTime) == false){
+                $this->load->model('User_model');
+                if($this->User_model->ubah_passwordKaryawan_adm($id_user, $username, password_hash($passwordBaru, PASSWORD_DEFAULT), $nowDateTime) == false){
                     $this->session->set_flashdata('successTopBar', '<div class="alert pt-2 pb-2 pl-3 pr-3 alert-danger alert-dismissible mt-3 alertAutoClose" role="alert">Failed! Password gagal diubah</div>');
                 }else{
                     $session = ['username' => $username];

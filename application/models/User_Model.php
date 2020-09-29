@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User_Model extends CI_Model{
+class User_model extends CI_Model{
 	private $_table = "tb_user";
 
 	function reset_passwordKaryawan_prs($username, $passnew){

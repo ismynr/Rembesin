@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Rembes_Model extends CI_Model{
+class Rembes_model extends CI_Model{
 
 	private $_table = "tb_rembes";
 	var $select_column = array("id_rembes","id_master_rembes","nama_rembes","tanggal_rembes","total_rembes","foto_nota","jenis_nota");

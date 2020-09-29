@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Jenis_Identitas_Model extends CI_Model{
+class Jenis_identitas_model extends CI_Model{
 
 	private $_table = "tb_jenis_identitas";
 	var $select_column = array("id_identitas","jenis_identitas");

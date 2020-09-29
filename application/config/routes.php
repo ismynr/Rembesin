@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples: my-controller/index -> my_controller/index
 |   my-controller/my-method -> my_controller/my_method
 */
-$route['default_controller'] = 'landing_controller';
+$route['default_controller'] = 'Landing_Controller';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = true;
 
@@ -66,14 +66,14 @@ $route['api/example/users/(:num)(\.)([a-zA-Z0-9_-]+)(.*)'] = 'api/example/users/
 | Route Landing Page
 | -------------------------------------------------------------------------
 */
-$route['auth'] = 'auth_controller';
-$route['auth/login'] = 'auth_controller';
-$route['auth/registrasi'] = 'auth_controller/registrasi';
-$route['blocked'] = 'auth_controller/blocked';
-$route['auth/logout'] = 'auth_controller/logout';
-$route['auth/forgot_password'] = 'auth_controller/forgotPassword';
-$route['auth/resetPassword'] = 'auth_controller/resetPassword';
-$route['auth/resetPassword/change'] = 'auth_controller/changePassword';
+$route['auth'] = 'Auth_Controller';
+$route['auth/login'] = 'Auth_Controller';
+$route['auth/registrasi'] = 'Auth_Controller/registrasi';
+$route['blocked'] = 'Auth_Controller/blocked';
+$route['auth/logout'] = 'Auth_Controller/logout';
+$route['auth/forgot_password'] = 'Auth_Controller/forgotPassword';
+$route['auth/resetPassword'] = 'Auth_Controller/resetPassword';
+$route['auth/resetPassword/change'] = 'Auth_Controller/changePassword';
 $route['contact_us/send'] = 'landing_controller/contact_us';
 
 /*
@@ -81,143 +81,143 @@ $route['contact_us/send'] = 'landing_controller/contact_us';
 | Route Admin Page
 | -------------------------------------------------------------------------
 */
-$route['admin'] = 'admin_controller';
+$route['admin'] = 'Admin_Controller';
 //MENU NEW REGIST
-$route['admin/new_regist'] = 'admin_controller/list_newRegist';
-$route['admin/new_regist/fetch'] = 'admin_controller/fetch_newRegist';
-$route['admin/new_regist/accept'] = 'admin_controller/approve_newRegist';
-$route['admin/new_regist/delete'] = 'admin_controller/delete_newRegist';
+$route['admin/new_regist'] = 'Admin_Controller/list_newRegist';
+$route['admin/new_regist/fetch'] = 'Admin_Controller/fetch_newRegist';
+$route['admin/new_regist/accept'] = 'Admin_Controller/approve_newRegist';
+$route['admin/new_regist/delete'] = 'Admin_Controller/delete_newRegist';
 //MENU PERUSAHAAN
-$route['admin/perusahaan'] = 'admin_controller/list_perusahaan';
-$route['admin/perusahaan/fetch'] = 'admin_controller/fetch_perusahaan';
-$route['admin/perusahaan/disapprove'] = 'admin_controller/disapprove_perusahaan';
-$route['admin/perusahaan/deleteTrash'] = 'admin_controller/deleteTrash_perusahaan';
+$route['admin/perusahaan'] = 'Admin_Controller/list_perusahaan';
+$route['admin/perusahaan/fetch'] = 'Admin_Controller/fetch_perusahaan';
+$route['admin/perusahaan/disapprove'] = 'Admin_Controller/disapprove_perusahaan';
+$route['admin/perusahaan/deleteTrash'] = 'Admin_Controller/deleteTrash_perusahaan';
 //MENU MASTER DATA
-$route['admin/jenis_identitas'] = 'admin_controller/list_jenisIdentitas';
-$route['admin/jenis_identitas/fetch'] = 'admin_controller/fetch_jenisIdentitas';
-$route['admin/jenis_identitas/add'] = 'admin_controller/add_jenisIdentitas';
-$route['admin/jenis_identitas/update'] = 'admin_controller/update_jenisIdentitas';
-$route['admin/jenis_identitas/delete'] = 'admin_controller/delete_jenisIdentitas';
-$route['admin/jenis_nota'] = 'admin_controller/list_jenisNota';
-$route['admin/jenis_nota/fetch'] = 'admin_controller/fetch_jenisNota';
-$route['admin/jenis_nota/add'] = 'admin_controller/add_jenisNota';
-$route['admin/jenis_nota/update'] = 'admin_controller/update_jenisNota';
-$route['admin/jenis_nota/delete'] = 'admin_controller/delete_jenisNota';
-$route['admin/jenis_bank'] = 'admin_controller/list_jenisBank';
-$route['admin/jenis_bank/fetch'] = 'admin_controller/fetch_jenisBank';
-$route['admin/jenis_bank/add'] = 'admin_controller/add_jenisBank';
-$route['admin/jenis_bank/update'] = 'admin_controller/update_jenisBank';
-$route['admin/jenis_bank/delete'] = 'admin_controller/delete_jenisBank';
+$route['admin/jenis_identitas'] = 'Admin_Controller/list_jenisIdentitas';
+$route['admin/jenis_identitas/fetch'] = 'Admin_Controller/fetch_jenisIdentitas';
+$route['admin/jenis_identitas/add'] = 'Admin_Controller/add_jenisIdentitas';
+$route['admin/jenis_identitas/update'] = 'Admin_Controller/update_jenisIdentitas';
+$route['admin/jenis_identitas/delete'] = 'Admin_Controller/delete_jenisIdentitas';
+$route['admin/jenis_nota'] = 'Admin_Controller/list_jenisNota';
+$route['admin/jenis_nota/fetch'] = 'Admin_Controller/fetch_jenisNota';
+$route['admin/jenis_nota/add'] = 'Admin_Controller/add_jenisNota';
+$route['admin/jenis_nota/update'] = 'Admin_Controller/update_jenisNota';
+$route['admin/jenis_nota/delete'] = 'Admin_Controller/delete_jenisNota';
+$route['admin/jenis_bank'] = 'Admin_Controller/list_jenisBank';
+$route['admin/jenis_bank/fetch'] = 'Admin_Controller/fetch_jenisBank';
+$route['admin/jenis_bank/add'] = 'Admin_Controller/add_jenisBank';
+$route['admin/jenis_bank/update'] = 'Admin_Controller/update_jenisBank';
+$route['admin/jenis_bank/delete'] = 'Admin_Controller/delete_jenisBank';
 //MENU TRASH
-$route['admin/trash'] = 'admin_controller/list_trash';
-$route['admin/trash/fetch'] = 'admin_controller/fetch_trash';
-$route['admin/trash/delete'] = 'admin_controller/delete_trash';
-$route['admin/trash/restore'] = 'admin_controller/restore_trash';
+$route['admin/trash'] = 'Admin_Controller/list_trash';
+$route['admin/trash/fetch'] = 'Admin_Controller/fetch_trash';
+$route['admin/trash/delete'] = 'Admin_Controller/delete_trash';
+$route['admin/trash/restore'] = 'Admin_Controller/restore_trash';
 
-$route['admin/ubahProfile'] = 'admin_controller/ubahProfile';
-$route['admin/password/form'] = 'admin_controller/form_ubahPassword';
-$route['admin/password/update'] = 'admin_controller/ubahPassword';
-$route['admin/dashboard/actifity_log/fetch'] = 'admin_controller/fetch_actifity_log_dashboard';
+$route['admin/ubahProfile'] = 'Admin_Controller/ubahProfile';
+$route['admin/password/form'] = 'Admin_Controller/form_ubahPassword';
+$route['admin/password/update'] = 'Admin_Controller/ubahPassword';
+$route['admin/dashboard/actifity_log/fetch'] = 'Admin_Controller/fetch_actifity_log_dashboard';
 
-$route['admin/pengaturan/general'] = 'admin_controller/form_general';
-$route['admin/pengaturan/general/save'] = 'admin_controller/save_general';
-$route['admin/pengaturan/email_kontak'] = 'admin_controller/form_emailKontak';
-$route['admin/pengaturan/email_kontak/save'] = 'admin_controller/save_emailKontak';
+$route['admin/pengaturan/general'] = 'Admin_Controller/form_general';
+$route['admin/pengaturan/general/save'] = 'Admin_Controller/save_general';
+$route['admin/pengaturan/email_kontak'] = 'Admin_Controller/form_emailKontak';
+$route['admin/pengaturan/email_kontak/save'] = 'Admin_Controller/save_emailKontak';
 
 /*
 | -------------------------------------------------------------------------
 | Route Perusahaan Page
 | -------------------------------------------------------------------------
 */
-$route['perusahaan'] = 'perusahaan_controller';
+$route['perusahaan'] = 'Perusahaan_Controller';
 //MENU TAMBAH KARYAWAN
-$route['perusahaan/form_tambah_karyawan'] = 'perusahaan_controller/form_tambahKaryawan';
-$route['perusahaan/form_tambah_karyawan/add'] = 'perusahaan_controller/add_formTambahKaryawan';
+$route['perusahaan/form_tambah_karyawan'] = 'Perusahaan_Controller/form_tambahKaryawan';
+$route['perusahaan/form_tambah_karyawan/add'] = 'Perusahaan_Controller/add_formTambahKaryawan';
 //MENU DATA KARYAWAN
-$route['perusahaan/data_karyawan'] = 'perusahaan_controller/list_dataKaryawan';
-$route['perusahaan/data_karyawan/fetch'] = 'perusahaan_controller/fetch_dataKaryawan';
-$route['perusahaan/data_karyawan/update'] = 'perusahaan_controller/update_dataKaryawan';
-$route['perusahaan/data_karyawan/delete'] = 'perusahaan_controller/delete_dataKaryawan';
-$route['perusahaan/data_karyawan/activity/fetch'] = 'perusahaan_controller/fetch_activity_dataKaryawan';
-$route['perusahaan/data_karyawan/password'] = 'perusahaan_controller/password_dataKaryawan';
-$route['perusahaan/data_karyawan/password/reset'] = 'perusahaan_controller/reset_password_dataKaryawan';
+$route['perusahaan/data_karyawan'] = 'Perusahaan_Controller/list_dataKaryawan';
+$route['perusahaan/data_karyawan/fetch'] = 'Perusahaan_Controller/fetch_dataKaryawan';
+$route['perusahaan/data_karyawan/update'] = 'Perusahaan_Controller/update_dataKaryawan';
+$route['perusahaan/data_karyawan/delete'] = 'Perusahaan_Controller/delete_dataKaryawan';
+$route['perusahaan/data_karyawan/activity/fetch'] = 'Perusahaan_Controller/fetch_activity_dataKaryawan';
+$route['perusahaan/data_karyawan/password'] = 'Perusahaan_Controller/password_dataKaryawan';
+$route['perusahaan/data_karyawan/password/reset'] = 'Perusahaan_Controller/reset_password_dataKaryawan';
 //MENU DATA KLAIM REMBES
-$route['perusahaan/klaim_rembes'] = 'perusahaan_controller/list_klaimRembes';
-$route['perusahaan/klaim_rembes/fetch'] = 'perusahaan_controller/fetch_klaimRembes';
-$route['perusahaan/klaim_rembes/klaim'] = 'perusahaan_controller/klaim_klaimRembes';
-$route['perusahaan/klaim_rembes/delete'] = 'perusahaan_controller/delete_klaimRembes';
-$route['perusahaan/klaim_rembes/list_rembes'] = 'perusahaan_controller/list_klaimRembes_sub';
-$route['perusahaan/klaim_rembes/list_rembes/fetch'] = 'perusahaan_controller/fetch_klaimRembes_sub';
+$route['perusahaan/klaim_rembes'] = 'Perusahaan_Controller/list_klaimRembes';
+$route['perusahaan/klaim_rembes/fetch'] = 'Perusahaan_Controller/fetch_klaimRembes';
+$route['perusahaan/klaim_rembes/klaim'] = 'Perusahaan_Controller/klaim_klaimRembes';
+$route['perusahaan/klaim_rembes/delete'] = 'Perusahaan_Controller/delete_klaimRembes';
+$route['perusahaan/klaim_rembes/list_rembes'] = 'Perusahaan_Controller/list_klaimRembes_sub';
+$route['perusahaan/klaim_rembes/list_rembes/fetch'] = 'Perusahaan_Controller/fetch_klaimRembes_sub';
 //MENU DATA REMBES
-$route['perusahaan/data_rembes'] = 'perusahaan_controller/list_dataRembes';
-$route['perusahaan/data_rembes/fetch'] = 'perusahaan_controller/fetch_dataRembes';
-$route['perusahaan/data_rembes/list_rembes'] = 'perusahaan_controller/list_dataRembes_sub';
-$route['perusahaan/data_rembes/list_rembes/fetch'] = 'perusahaan_controller/fetch_dataRembes_sub';
+$route['perusahaan/data_rembes'] = 'Perusahaan_Controller/list_dataRembes';
+$route['perusahaan/data_rembes/fetch'] = 'Perusahaan_Controller/fetch_dataRembes';
+$route['perusahaan/data_rembes/list_rembes'] = 'Perusahaan_Controller/list_dataRembes_sub';
+$route['perusahaan/data_rembes/list_rembes/fetch'] = 'Perusahaan_Controller/fetch_dataRembes_sub';
 //MENU URGENT 
-$route['perusahaan/urgent'] = 'perusahaan_controller/list_urgent';
-$route['perusahaan/urgent/fetch'] = 'perusahaan_controller/fetch_urgent';
-$route['perusahaan/urgent/list_rembes'] = 'perusahaan_controller/list_urgent_sub';
-$route['perusahaan/urgent/list_rembes/fetch'] = 'perusahaan_controller/fetch_urgent_sub';
+$route['perusahaan/urgent'] = 'Perusahaan_Controller/list_urgent';
+$route['perusahaan/urgent/fetch'] = 'Perusahaan_Controller/fetch_urgent';
+$route['perusahaan/urgent/list_rembes'] = 'Perusahaan_Controller/list_urgent_sub';
+$route['perusahaan/urgent/list_rembes/fetch'] = 'Perusahaan_Controller/fetch_urgent_sub';
 
-$route['perusahaan/ubahProfile'] = 'perusahaan_controller/ubahProfile';
-$route['perusahaan/password/form'] = 'perusahaan_controller/form_ubahPassword';
-$route['perusahaan/password/update'] = 'perusahaan_controller/ubahPassword';
+$route['perusahaan/ubahProfile'] = 'Perusahaan_Controller/ubahProfile';
+$route['perusahaan/password/form'] = 'Perusahaan_Controller/form_ubahPassword';
+$route['perusahaan/password/update'] = 'Perusahaan_Controller/ubahPassword';
 
-$route['perusahaan/data_rembes/report'] = 'perusahaan_controller/report';
+$route['perusahaan/data_rembes/report'] = 'Perusahaan_Controller/report';
 
-$route['perusahaan/dashboard/activity_log/fetch'] = 'perusahaan_controller/fetch_activity_log_dashboard';
+$route['perusahaan/dashboard/activity_log/fetch'] = 'Perusahaan_Controller/fetch_activity_log_dashboard';
 
 /*
 | -------------------------------------------------------------------------
 | Route Karyawan Page
 | -------------------------------------------------------------------------
 */
-$route['karyawan'] = 'karyawan_controller';
+$route['karyawan'] = 'Karyawan_Controller';
 //MENU AJUKAN KEGIATAN
-$route['karyawan/kegiatan/ajukan'] = 'karyawan_controller/form_ajukanKegiatan';
-$route['karyawan/kegiatan/add'] = 'karyawan_controller/add_ajukanKegiatan';
+$route['karyawan/kegiatan/ajukan'] = 'Karyawan_Controller/form_ajukanKegiatan';
+$route['karyawan/kegiatan/add'] = 'Karyawan_Controller/add_ajukanKegiatan';
 //MENU DATA KEGIATAN
-$route['karyawan/kegiatan'] = 'karyawan_controller/list_kegiatan';
-$route['karyawan/kegiatan/fetch'] = 'karyawan_controller/fetch_kegiatan';
-$route['karyawan/kegiatan/update'] = 'karyawan_controller/update_kegiatan';
-$route['karyawan/kegiatan/delete'] = 'karyawan_controller/delete_kegiatan';
-$route['karyawan/kegiatan/list_rembes'] = 'karyawan_controller/list_kegiatan_sub';
-$route['karyawan/kegiatan/list_rembes/fetch'] = 'karyawan_controller/fetch_kegiatan_sub';
-$route['karyawan/kegiatan/list_rembes/update'] = 'karyawan_controller/update_kegiatan_sub';
-$route['karyawan/kegiatan/list_rembes/delete'] = 'karyawan_controller/delete_kegiatan_sub';
+$route['karyawan/kegiatan'] = 'Karyawan_Controller/list_kegiatan';
+$route['karyawan/kegiatan/fetch'] = 'Karyawan_Controller/fetch_kegiatan';
+$route['karyawan/kegiatan/update'] = 'Karyawan_Controller/update_kegiatan';
+$route['karyawan/kegiatan/delete'] = 'Karyawan_Controller/delete_kegiatan';
+$route['karyawan/kegiatan/list_rembes'] = 'Karyawan_Controller/list_kegiatan_sub';
+$route['karyawan/kegiatan/list_rembes/fetch'] = 'Karyawan_Controller/fetch_kegiatan_sub';
+$route['karyawan/kegiatan/list_rembes/update'] = 'Karyawan_Controller/update_kegiatan_sub';
+$route['karyawan/kegiatan/list_rembes/delete'] = 'Karyawan_Controller/delete_kegiatan_sub';
 //MENU NOTA REMBES
-$route['karyawan/rembes'] = 'karyawan_controller/list_notaRembes';
-$route['karyawan/rembes/add'] = 'karyawan_controller/add_notaRembes';
-$route['karyawan/rembes/fetch'] = 'karyawan_controller/fetch_notaRembes';
-$route['karyawan/rembes/update'] = 'karyawan_controller/update_notaRembes';
-$route['karyawan/rembes/delete'] = 'karyawan_controller/delete_notaRembes';
+$route['karyawan/rembes'] = 'Karyawan_Controller/list_notaRembes';
+$route['karyawan/rembes/add'] = 'Karyawan_Controller/add_notaRembes';
+$route['karyawan/rembes/fetch'] = 'Karyawan_Controller/fetch_notaRembes';
+$route['karyawan/rembes/update'] = 'Karyawan_Controller/update_notaRembes';
+$route['karyawan/rembes/delete'] = 'Karyawan_Controller/delete_notaRembes';
 //LAPORAN DATA REMBESIN
-$route['karyawan/lap_dataRembes/list_rembes'] = 'karyawan_controller/list_lapDataRembes_sub';
-$route['karyawan/lap_dataRembes/list_rembes/fetch'] = 'karyawan_controller/fetch_lapDataRembes_sub';
+$route['karyawan/lap_dataRembes/list_rembes'] = 'Karyawan_Controller/list_lapDataRembes_sub';
+$route['karyawan/lap_dataRembes/list_rembes/fetch'] = 'Karyawan_Controller/fetch_lapDataRembes_sub';
 //LAPORAN DATA REMBESIN
-$route['karyawan/lap_dataRembes/unclaimed'] = 'karyawan_controller/list_lapDataRembes_unclaimed';
-$route['karyawan/lap_dataRembes/unclaimed/fetch'] = 'karyawan_controller/fetch_lapDataRembes_unclaimed';
-$route['karyawan/lap_dataRembes/unclaimed/submit'] = 'karyawan_controller/submit_lapDataRembes_unclaimed';
-$route['karyawan/lap_dataRembes/unclaimed/cancel_submit'] = 'karyawan_controller/cancelSubmit_lapDataRembes_unclaimed';
-$route['karyawan/lap_dataRembes/unclaimed/list_rembes'] = 'karyawan_controller/list_lapDataRembes_unclaimed_sub';
-$route['karyawan/lap_dataRembes/unclaimed/list_rembes/fetch'] = 'karyawan_controller/fetch_lapDataRembes_unclaimed_sub';
-$route['karyawan/lap_dataRembes/claimed'] = 'karyawan_controller/list_lapDataRembes_claimed';
-$route['karyawan/lap_dataRembes/claimed/fetch'] = 'karyawan_controller/fetch_lapDataRembes_claimed';
-$route['karyawan/lap_dataRembes/claimed/list_rembes'] = 'karyawan_controller/list_lapDataRembes_claimed_sub';
-$route['karyawan/lap_dataRembes/claimed/list_rembes/fetch'] = 'karyawan_controller/fetch_lapDataRembes_claimed_sub';
+$route['karyawan/lap_dataRembes/unclaimed'] = 'Karyawan_Controller/list_lapDataRembes_unclaimed';
+$route['karyawan/lap_dataRembes/unclaimed/fetch'] = 'Karyawan_Controller/fetch_lapDataRembes_unclaimed';
+$route['karyawan/lap_dataRembes/unclaimed/submit'] = 'Karyawan_Controller/submit_lapDataRembes_unclaimed';
+$route['karyawan/lap_dataRembes/unclaimed/cancel_submit'] = 'Karyawan_Controller/cancelSubmit_lapDataRembes_unclaimed';
+$route['karyawan/lap_dataRembes/unclaimed/list_rembes'] = 'Karyawan_Controller/list_lapDataRembes_unclaimed_sub';
+$route['karyawan/lap_dataRembes/unclaimed/list_rembes/fetch'] = 'Karyawan_Controller/fetch_lapDataRembes_unclaimed_sub';
+$route['karyawan/lap_dataRembes/claimed'] = 'Karyawan_Controller/list_lapDataRembes_claimed';
+$route['karyawan/lap_dataRembes/claimed/fetch'] = 'Karyawan_Controller/fetch_lapDataRembes_claimed';
+$route['karyawan/lap_dataRembes/claimed/list_rembes'] = 'Karyawan_Controller/list_lapDataRembes_claimed_sub';
+$route['karyawan/lap_dataRembes/claimed/list_rembes/fetch'] = 'Karyawan_Controller/fetch_lapDataRembes_claimed_sub';
 
-$route['karyawan/lap_dataRembes/cetak'] = 'karyawan_controller/cetak';
-$route['karyawan/lap_dataRembes/cetak/preview'] = 'karyawan_controller/preview_cetak';
+$route['karyawan/lap_dataRembes/cetak'] = 'Karyawan_Controller/cetak';
+$route['karyawan/lap_dataRembes/cetak/preview'] = 'Karyawan_Controller/preview_cetak';
 
-$route['karyawan/ubahProfile'] = 'karyawan_controller/ubahProfile';
-$route['karyawan/password/form'] = 'karyawan_controller/form_ubahPassword';
-$route['karyawan/password/update'] = 'karyawan_controller/ubahPassword';
+$route['karyawan/ubahProfile'] = 'Karyawan_Controller/ubahProfile';
+$route['karyawan/password/form'] = 'Karyawan_Controller/form_ubahPassword';
+$route['karyawan/password/update'] = 'Karyawan_Controller/ubahPassword';
 
-$route['karyawan/dashboard/activity_log/fetch'] = 'karyawan_controller/fetch_activity_log_dashboard';
+$route['karyawan/dashboard/activity_log/fetch'] = 'Karyawan_Controller/fetch_activity_log_dashboard';
 
 /*
 | -------------------------------------------------------------------------
 | API
 | -------------------------------------------------------------------------
 */
-$route['api/karyawan'] = 'api_controller';
+$route['api/karyawan'] = 'Api_Controller';

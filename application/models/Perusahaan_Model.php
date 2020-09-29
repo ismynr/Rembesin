@@ -1,6 +1,6 @@
 <?php 
 
-class Perusahaan_Model extends CI_Model{
+class Perusahaan_model extends CI_Model{
 
 	private $_table = "tb_perusahaan";
 	var $select_column = array("id_perusahaan","id_user","nama_perusahaan","alamat_perusahaan","no_telepon","email_perusahaan","approvment","trash","created_at","updated_at");
